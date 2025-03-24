@@ -1,4 +1,4 @@
-KAYT-Techstarterbody {
+/* Standard-Lightmode */
 body {
     display: flex;
     flex-direction: column;
@@ -18,7 +18,6 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     height: 100vh;
     background-image: url("background.png");
     background-position: center bottom;
@@ -32,12 +31,13 @@ body::before {
 }
 
 body.dark-mode {
-    color: rgb(0, 0, 0);
+    background-color: #121212;
+    color: rgb(127, 127, 127);
 }
 
 body.dark-mode::before {
     filter: invert(1);
-    opacity: 0.40;
+    opacity:0.05;
 }
 
 body * {
@@ -46,6 +46,7 @@ body * {
     z-index: 1;
 }
 
+/* Allgemeine Elemente */
 h1 {
     text-align: center;
     text-decoration: underline;
@@ -59,77 +60,129 @@ ul {
 li {
     display: flex;
     align-items: center;
-}
-
-li input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-button, input {
+    background-color:rgb(255, 255, 255);;
+    padding: 10px;
     border-radius: 5px;
-    border: none;
+    transition: background-color 0.3s ease;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-#addButton {
-    padding: 10px 50px;
-    background-color: #e4e4e4;
-    color: rgb(0, 0, 0);
-    cursor: cell;
+body.dark-mode li {
+    background-color: #333;
+}
+
+/* Inputs & Dropdown */
+input, select {
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    color: rgb(127, 127, 127);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-#addButton:hover {
-    background-color: #aaa;
+body.dark-mode input, 
+body.dark-mode select {
+    background-color: #333;
+    color: white;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Buttons */
+button {
+    border-radius: 5px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: rgb(127, 127, 127);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #c9c8c8;
+}
+
+body.dark-mode button {
+    background-color: #333;
+    color: rgb(127, 127, 127);
+}
+
+body.dark-mode button:hover {
+    background-color: #555;
+}
+
+/* Spezielle Buttons */
+#addButton {
+    padding: 10px 50px;
+    cursor: cell;
 }
 
 #toogleMode {
     position: fixed;
-    right: 25px; 
-    top: 10px; 
+    right: 1px; 
+    top: 5px; 
     z-index: 10; 
-    padding: 10px 20px;
-    background-color: #e4e4e4;
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 5px;
-    cursor: wait;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: crosshair;
 }
 
+#budgetSaveButton {
+    position: fixed;
+    z-index: 10; 
+    cursor: cell;
+}
+
+#deleteAllButton {
+    cursor: none;
+}
+
+#addButton:hover,
+#budgetSaveButton:hover,
+#budgetUserInput:hover,
+#artikel:hover,
+#anzahl:hover,
+#preis:hover,
+#choiceKatDropdown:hover,
 #toogleMode:hover {
-    background-color: #aaa;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-/* DARKMODE */
-
+/* DARKMODE-Spezifische Anpassungen */
+body.dark-mode #budgetSaveButton,
 body.dark-mode #addButton,
 body.dark-mode #toogleMode {
     background-color: #333;
     color: rgb(127, 127, 127);
 }
 
+body.dark-mode select {
+    background-color: #333;
+    color: rgb(127, 127, 127);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
 body.dark-mode #addButton:hover,
+body.dark-mode #budgetSaveButton:hover,
+body.dark-mode #budgetUserInput:hover,
+body.dark-mode #artikel:hover,
+body.dark-mode #anzahl:hover,
+body.dark-mode #preis:hover,
+body.dark-mode #choiceKatDropdown:hover,
 body.dark-mode #toogleMode:hover {
     background-color: #5e5e5e;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="number"] {
-    background-color: #e4e4e4;
-    color: rgb(0, 0, 0);
-    padding: 10px;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+body.dark-mode #gesamt, 
+body.dark-mode #budget {
+    color: #lime;
 }
 
-body.dark-mode input[type="text"],
-body.dark-mode input[type="number"] {
-    background-color: #333;
-    color: white;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+/* Checkbox Anpassungen */
+input[type="checkbox"] {
+    transform: scale(1.5);
+    cursor: pointer;
 }
 
+body.dark-mode input[type="checkbox"] {
+    accent-color: #aaaaaa;
+}
