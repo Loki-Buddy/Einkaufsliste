@@ -58,11 +58,3 @@ addButton.addEventListener("click", () => {
     anzahlInput.value = "";
     preisInput.value = "";
 });
-
-function updatePreis() {
-    gesamt.textContent = `Gesamt: ${gesamtPreis}€`;
-}
-
-function deleteAll(){
-    liste.remove();
-}
