@@ -6,28 +6,66 @@ const liste = document.getElementById("liste");
 const gesamt = document.getElementById("gesamt");
 const budget = document.getElementById("budget");
 const budgetInput = document.getElementById("budgetInput");
+
+
+
 let itemList = [];
+let budgetUserInput
 
 let gesamtPreis = 0;
+let budgetGesamt= 0;
 
-function budgetInputFunc(){
-    budget.innerHTML = ''
+const dropdown = document.getElementById("choiceKatDropdown");
+const kategorien = ["","Obst", "Gemüse", "Getränke", "Snacks"]; // Beispielkategorien
+
+function budgetSpeichern() {
+    budgetUserInput = document.getElementById("budgetUserInput").value;
+    if(budgetUserInput > 0){
+        budgetGesamt = budgetUserInput;
+    }
+    
+    updatePreis();
 }
 
 function updatePreis() {
     gesamt.textContent = `Gesamt: ${gesamtPreis}€`;
-    budget.textContent = `Budget: `
+    budget.textContent = `Budget: ${budgetGesamt}€`;
+
+    if(budgetGesamt<0){
+        budget.style.color="red";
+        alert("Ohne Moos nix Los!");
+    }else if(budgetGesamt===0){
+        budget.style.color = "black";
+    }else{
+        budget.style.color="green";
+    }
 }
 
 function deleteAll(){
     liste.remove();
+    gesamtPreis = 0;
+    budgetGesamt= 0;
+    document.getElementById("budgetUserInput").value = "";
+    updatePreis();
+    dropdown.selectedIndex = 0;
 }
 
-function doubleItem(){
+function dropdownItemsHinzufuegen() {
+    updatePreis();
+    /* const dropdown = document.getElementById("choiceKatDropdown");
 
+    const kategorien = ["Obst", "Gemüse", "Getränke", "Snacks"]; // Beispielkategorien */
+
+    kategorien.forEach(kategorie => {
+        const option = document.createElement("option");
+        option.value = kategorie.toLowerCase(); // Wert der Option
+        option.textContent = kategorie; // Sichtbarer Text
+        dropdown.appendChild(option);
+    });
 }
 
 addButton.addEventListener("click", () => {
+    
     const artikel = artikelInput.value;
     const anzahl = anzahlInput.value;
     const preis = preisInput.value;
@@ -43,23 +81,22 @@ addButton.addEventListener("click", () => {
     checkbox.addEventListener("change", () => {
         if (checkbox.checked ) {
             gesamtPreis += anzahl * preis;
+            budgetGesamt -= anzahl * preis;
             updatePreis();
         } else{
             gesamtPreis -= anzahl * preis;
+            budgetGesamt += anzahl * preis;
             updatePreis();
         }
     });
-    // Textinhalt des Listenelements
-    const text = document.createTextNode(`${anzahl} x ${artikel}: ${preis}€ p.P. ------ ${anzahl * preis}€`);
+    const text = document.createTextNode(`${kategorien.at(dropdown.selectedIndex)}  //  ${anzahl} x ${artikel}: ${preis}€ p.P. ------ ${anzahl * preis}€`);
 
-    // Füge die Checkbox und den Text zum Listenelement hinzu
     new_li.appendChild(checkbox);
     new_li.appendChild(text);
 
-    // Füge einen Löschen Button hinzu
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "❌";
-    deleteButton.style.marginLeft = "10px"; // Abstand zwischen Text und Button
+    deleteButton.style.marginLeft = "10px";
     deleteButton.addEventListener("click", () => {
         liste.removeChild(new_li);
         if(checkbox.checked){
@@ -77,3 +114,5 @@ addButton.addEventListener("click", () => {
     anzahlInput.value = "";
     preisInput.value = "";
 });
+
+document.addEventListener("DOMContentLoaded", dropdownItemsHinzufuegen);
