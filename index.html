@@ -10,7 +10,8 @@
 <body>
     <h1>Einkaufsliste : 🛒</h1>
     <div id="budgetInput">
-        <input type="text" id="budgetUserInput" placeholder="Budget eingeben..."><button onclick="budgetSpeichern()">Speichern</button>
+        <input type="text" id="budgetUserInput" placeholder="Budget eingeben...">
+        <button id="budgetSaveButton">Speichern</button>
     </div>
     <input type="text" id="artikel" placeholder="Artikelname...">
     <input type="number" id="anzahl" placeholder="Anzahl...">
@@ -18,8 +19,8 @@
     <select name="choiceKat" id="choiceKatDropdown">
         <option value="" disabled selected>Wähle eine Kategorie...</option>
     </select>
-    <button id="addButton" onclick="doubleItem()">Hinzufügen</button>
-    <button onclick="deleteAll()">Alles Löschen</button>
+    <button id="addButton">Hinzufügen</button>
+    <button id="deleteAllButton">Alles Löschen</button>
     <ul id="liste"></ul>
     <h5 id="gesamt"></h5>
     <h5 id="budget"></h5>
