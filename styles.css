@@ -1,4 +1,5 @@
 KAYT-Techstarterbody {
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,8 +7,11 @@ KAYT-Techstarterbody {
     padding-right: 20%;
     position: relative;
     height: 100vh;
+    background-repeat: repeat;
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 body::before {
     content: "";
     position: absolute;
@@ -15,29 +19,117 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
+    height: 100vh;
     background-image: url("background.png");
     background-position: center bottom;
     background-size: cover;
     background-repeat: repeat-y;
+    background-size: 100%;
+    background-repeat: repeat;
     opacity: 0.25;
     z-index: -1;
+    transition: opacity 0.5s ease, filter 0.5s ease;
 }
+
+body.dark-mode {
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode::before {
+    filter: invert(1);
+    opacity: 0.40;
+}
+
 body * {
     margin: 5px;
     position: relative;
     z-index: 1;
 }
+
 h1 {
     text-align: center;
+    text-decoration: underline;
 }
+
 ul {
     list-style-type: none;
     padding: 0;
 }
+
 li {
     display: flex;
     align-items: center;
 }
+
 li input[type="checkbox"] {
     margin-right: 10px;
 }
+
+button, input {
+    border-radius: 5px;
+    border: none;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#addButton {
+    padding: 10px 50px;
+    background-color: #e4e4e4;
+    color: rgb(0, 0, 0);
+    cursor: cell;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#addButton:hover {
+    background-color: #aaa;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#toogleMode {
+    position: fixed;
+    right: 25px; 
+    top: 10px; 
+    z-index: 10; 
+    padding: 10px 20px;
+    background-color: #e4e4e4;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: wait;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#toogleMode:hover {
+    background-color: #aaa;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* DARKMODE */
+
+body.dark-mode #addButton,
+body.dark-mode #toogleMode {
+    background-color: #333;
+    color: rgb(127, 127, 127);
+}
+
+body.dark-mode #addButton:hover,
+body.dark-mode #toogleMode:hover {
+    background-color: #5e5e5e;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="number"] {
+    background-color: #e4e4e4;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="number"] {
+    background-color: #333;
+    color: white;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
