@@ -9,11 +9,17 @@
 </head>
 <body>
     <h1>Einkaufsliste : 🛒</h1>
+    <div id="budgetInput" onload="budgetInputFunc()">
+        <input type="text">
+        <button onclick="budgetSpeichern()">Speichern</button>
+    </div>
     <input type="text" id="artikel" placeholder="Artikelname...">
     <input type="number" id="anzahl" placeholder="Anzahl...">
     <input type="number" id="preis" placeholder="Preis pro Stück...">
-    <button id="addButton">Hinzufügen</button>
+    <button id="addButton" onclick="doubleItem()">Hinzufügen</button>
+    <button onclick="deleteAll()">Alles Löschen</button>
     <ul id="liste"></ul>
     <h5 id="gesamt"></h5>
+    <h5 id="budget"></h5>
 </body>
 </html>

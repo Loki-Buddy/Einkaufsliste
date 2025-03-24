@@ -4,9 +4,28 @@ const anzahlInput = document.getElementById("anzahl");
 const preisInput = document.getElementById("preis");
 const liste = document.getElementById("liste");
 const gesamt = document.getElementById("gesamt");
+const budget = document.getElementById("budget");
+const budgetInput = document.getElementById("budgetInput");
 let itemList = [];
 
 let gesamtPreis = 0;
+
+function budgetInputFunc(){
+    budget.innerHTML = ''
+}
+
+function updatePreis() {
+    gesamt.textContent = `Gesamt: ${gesamtPreis}€`;
+    budget.textContent = `Budget: `
+}
+
+function deleteAll(){
+    liste.remove();
+}
+
+function doubleItem(){
+
+}
 
 addButton.addEventListener("click", () => {
     const artikel = artikelInput.value;
