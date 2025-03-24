@@ -4,7 +4,6 @@ const anzahlInput = document.getElementById("anzahl");
 const preisInput = document.getElementById("preis");
 const liste = document.getElementById("liste");
 const gesamt = document.getElementById("gesamt");
-let counter;
 let itemList = [];
 
 let gesamtPreis = 0;
@@ -47,17 +46,12 @@ addButton.addEventListener("click", () => {
         if(checkbox.checked){
             gesamtPreis -= anzahl * preis;
             updatePreis();
-        }else {
-
         }
-        /* gesamtPreis -= anzahl * preis;
-        updatePreis(); */
     });
     new_li.appendChild(deleteButton);
 
     liste.appendChild(new_li);
     itemList.push(new_li);
-    // Gesamtpreis aktualisieren
 
     // Inputfelder leeren
     artikelInput.value = "";
@@ -70,5 +64,5 @@ function updatePreis() {
 }
 
 function deleteAll(){
-    
+    liste.remove();
 }
