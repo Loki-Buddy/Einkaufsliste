@@ -6,14 +6,26 @@
     <title>Einkaufsliste 🛒</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <script src="toggleLightDark.js" defer></script>
 </head>
 <body>
-    <h1>Einkaufsliste : 🛒</h1>
+    <h1>Einkaufsliste</h1>
+    <div id="budgetInput">
+        <input type="text" id="budgetUserInput" placeholder="Budget eingeben...">
+        <button id="budgetSaveButton">Speichern</button>
+    </div>
+    <button id="toogleMode" onclick="toogleMode()">Darkmode</button>
     <input type="text" id="artikel" placeholder="Artikelname...">
     <input type="number" id="anzahl" placeholder="Anzahl...">
     <input type="number" id="preis" placeholder="Preis pro Stück...">
+    <select name="choiceKat" id="choiceKatDropdown">
+        <option value="" disabled selected>Wähle eine Kategorie...</option>
+    </select>
     <button id="addButton">Hinzufügen</button>
-    <ul id="liste"></ul>
+    <button id="deleteAllButton">Alles Löschen</button>
+    <ul id="liste">
     <h5 id="gesamt"></h5>
+    <h5 id="budget"></h5>
+    
 </body>
 </html>

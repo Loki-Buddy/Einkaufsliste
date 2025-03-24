@@ -1,4 +1,5 @@
-KAYT-Techstarterbody {
+/* Standard-Lightmode */
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,38 +7,182 @@ KAYT-Techstarterbody {
     padding-right: 20%;
     position: relative;
     height: 100vh;
+    background-repeat: repeat;
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 body::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url("background.png");
     background-position: center bottom;
     background-size: cover;
     background-repeat: repeat-y;
+    background-size: 100%;
+    background-repeat: repeat;
     opacity: 0.25;
     z-index: -1;
+    transition: opacity 0.5s ease, filter 0.5s ease;
 }
+
+body.dark-mode {
+    background-color: #121212;
+    color: rgb(127, 127, 127);
+}
+
+body.dark-mode::before {
+    filter: invert(1);
+    opacity:0.05;
+}
+
 body * {
     margin: 5px;
     position: relative;
     z-index: 1;
 }
+
+/* Allgemeine Elemente */
 h1 {
     text-align: center;
+    text-decoration: underline;
 }
+
 ul {
     list-style-type: none;
     padding: 0;
 }
+
 li {
     display: flex;
     align-items: center;
+    background-color:rgb(255, 255, 255);;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
-li input[type="checkbox"] {
-    margin-right: 10px;
+
+body.dark-mode li {
+    background-color: #333;
+}
+
+/* Inputs & Dropdown */
+input, select {
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    color: rgb(127, 127, 127);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode input, 
+body.dark-mode select {
+    background-color: #333;
+    color: white;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Buttons */
+button {
+    border-radius: 5px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: rgb(127, 127, 127);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #c9c8c8;
+}
+
+body.dark-mode button {
+    background-color: #333;
+    color: rgb(127, 127, 127);
+}
+
+body.dark-mode button:hover {
+    background-color: #555;
+}
+
+/* Spezielle Buttons */
+#addButton {
+    padding: 10px 50px;
+    cursor: cell;
+}
+
+#toogleMode {
+    position: fixed;
+    right: 1px; 
+    top: 5px; 
+    z-index: 10; 
+    cursor: crosshair;
+}
+
+#budgetSaveButton {
+    position: fixed;
+    z-index: 10; 
+    cursor: cell;
+}
+
+#deleteAllButton {
+    cursor: none;
+}
+
+#addButton:hover,
+#budgetSaveButton:hover,
+#budgetUserInput:hover,
+#artikel:hover,
+#anzahl:hover,
+#preis:hover,
+#choiceKatDropdown:hover,
+#toogleMode:hover {
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* DARKMODE-Spezifische Anpassungen */
+body.dark-mode #budgetSaveButton,
+body.dark-mode #addButton,
+body.dark-mode #toogleMode {
+    background-color: #333;
+    color: rgb(127, 127, 127);
+}
+
+body.dark-mode select {
+    background-color: #333;
+    color: rgb(127, 127, 127);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode #addButton:hover,
+body.dark-mode #budgetSaveButton:hover,
+body.dark-mode #budgetUserInput:hover,
+body.dark-mode #artikel:hover,
+body.dark-mode #anzahl:hover,
+body.dark-mode #preis:hover,
+body.dark-mode #choiceKatDropdown:hover,
+body.dark-mode #toogleMode:hover {
+    background-color: #5e5e5e;
+}
+
+body.dark-mode #gesamt, 
+body.dark-mode #budget {
+    color: #lime;
+}
+
+/* Checkbox Anpassungen */
+input[type="checkbox"] {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+body.dark-mode input[type="checkbox"] {
+    accent-color: #aaaaaa;
 }
